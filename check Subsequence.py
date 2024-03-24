@@ -4,8 +4,7 @@
 3) The pointers move as per a condition is matched.
 '''
 
-
-def isSubsequence(str1: str, str2: str):
+def isSubsequence1(str1: str, str2: str):
     i, j = 0, 0
     lenStr, lenSub = len(str1), len(str2)
     while (i < lenStr):
@@ -20,5 +19,20 @@ def isSubsequence(str1: str, str2: str):
     else:
         return False
 
+'''
+Adding a recursive solution to check for subsequence.
+'''
+def isSubsequence2(s: str, t: str) -> bool:
+    if t == '':
+        return True
+    elif s == '':
+        return False
+    else:
+        if t[0] == s[0]:
+            return isSubsequence2(s[1:], t[1:])
+        else:
+            return isSubsequence2(s[1:], t)
+
 if __name__ == "__main__":
-    print(isSubsequence("abcddef", "abdf"))
+    print(isSubsequence1("abcddef", "abdf"))
+    print(isSubsequence2("abcddef", "abdf"))
